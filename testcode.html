@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CodeMentor | Learn to Code</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/tutorial-styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+     <!-- Background Elements -->
+    <div class="bg-element bg-1"></div>
+    <div class="bg-element bg-2"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-dots"></div>
+    
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-code"></i>
+            <a href="/" class="logo-link">
+                <span class="logo-text">LearnTheCode</span>
+            </a>
+            <button class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item ">
+                    <a href="/" class="nav-link">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/courses" class="nav-link">
+                        <i class="fas fa-book"></i> Courses
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/blog" class="nav-link">
+                        <i class="fas fa-blog"></i> Blog
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/code" class="nav-link">
+                        <i class="fas fa-tasks"></i> Test Your Code
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/connect" class="nav-link">
+                        <i class="fas fa-users"></i> Connect With Author
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+       <!-- Main Content Area -->
+        <main class="tutorial-content">
+            <!-- Header Section -->
+            <header class="content-header">
+                
+
+       
+
+                <!-- Input Example -->
+                <div class="example-container">
+                    <h3>Test Your Code Here</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>input_example.py</span>
+                            <div class="code-actions">
+                                <button class="copy-button">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                                <button class="run-button">
+                                    <i class="fas fa-play"></i> Run Code
+                                </button>
+                                <button class="reset-button">
+                                    <i class="fas fa-undo"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+                        <textarea class="editable-code" spellcheck="false"># Note: This will prompt for input when you click "Run Code"
+age = int(input("Enter your age: "))
+if age >= 18:
+    print("You are an adult")
+else:
+    print("You are a minor")</textarea>
+                    </div>
+                    
+                    <div class="output-panel">
+                        <div class="output-header">
+                            <span>Output</span>
+                        </div>
+                        <div class="output-content">
+                            <pre class="output-text">Click "Run Code" to see output</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    <script src="{{url_for('static',filename='js/tutorial.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
+</body>
+</html>

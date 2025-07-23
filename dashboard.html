@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMentor | Edit Lesson</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --border-radius: 6px;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        .lesson-editor {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .editor-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .editor-header h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+
+        .editor-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .editor-actions .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .editor-actions .btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .editor-body {
+            padding: 2rem;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .code-block {
+            font-family: 'Fira Code', monospace;
+            background: #f8f9fa;
+            border-left: 3px solid var(--accent);
+            padding: 1rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .form-note {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-top: 0.5rem;
+        }
+
+        .submit-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .lesson-editor {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .editor-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .editor-actions {
+                width: 100%;
+            }
+            
+            .editor-actions .btn {
+                flex: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-element bg-1"></div>
+    <div class="bg-element bg-2"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-dots"></div>
+    
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-12">
+                <div class="lesson-editor">
+                    <div class="editor-header">
+                        <h1><i class="fas fa-edit"></i> Edit Programming Lesson</h1>
+                        <div class="editor-actions">
+                            <a href="/dashboard" class="btn"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                            <a href="logout" class="btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                    
+                    <div class="editor-body">
+                        <form id="lessonForm" action="/tutorial/{{sno}}" method="post">
+                            <!-- Basic Information Section -->
+                            <div class="form-section">
+                                <h3 class="section-title"><i class="fas fa-info-circle"></i> Basic Information</h3>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="title">Lesson Title</label>
+                                    <input class="form-control" id="title" name="title" type="text" value="{{post.title}}" required />
+                                    <p class="form-note">A clear, descriptive title for the lesson (max 40 chars)</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="author">Author</label>
+                                    <input class="form-control" id="author" name="author" type="text" value="{{post.author}}" />
+                                    <p class="form-note">Name of the lesson creator</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="slug">URL Slug</label>
+                                    <input class="form-control" id="slug" name="slug" type="text" value="{{post.slug}}" required />
+                                    <p class="form-note">URL-friendly identifier (no spaces or special chars, max 40 chars)</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="intro">Introduction</label>
+                                    <textarea class="form-control" id="intro" name="intro" required>{{post.intro}}</textarea>
+                                    <p class="form-note">Brief introduction to the concept (max 40 chars)</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Code Explanation Section -->
+                            <div class="form-section">
+                                <h3 class="section-title"><i class="fas fa-code"></i> Code Explanation</h3>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="syntax">Syntax</label>
+                                    <input class="form-control" id="syntax" name="syntax" type="text" value="{{post.syntax}}" />
+                                    <p class="form-note">The syntax being explained (max 40 chars)</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="exp1">First Explanation</label>
+                                    <textarea class="form-control" id="exp1" name="exp1">{{post.exp1}}</textarea>
+                                    <p class="form-note">Initial explanation of the concept (max 40 chars)</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="code">Example Code</label>
+                                    <textarea class="form-control code-block" id="code" name="code">{{post.code}}</textarea>
+                                    <p class="form-note">Code example that demonstrates the concept (max 40 chars)</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="exp2">Second Explanation</label>
+                                    <textarea class="form-control" id="exp2" name="exp2">{{post.exp2}}</textarea>
+                                    <p class="form-note">Additional explanation or notes (max 40 chars)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="submit-section">
+                                <button class="btn-submit" type="submit">
+                                    <i class="fas fa-save"></i> Update Lesson
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
+</body>
+</html>

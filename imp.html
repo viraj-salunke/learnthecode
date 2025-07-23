@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Closures | CodeMentor</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/tutorial-styles.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="tutorial-wrapper">
+        <!-- Left Navigation Panel -->
+        <aside class="tutorial-nav">
+            <div class="nav-header">
+                <i class="fas fa-code"></i>
+                <h2>JavaScript Closures</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><i class="fas fa-play"></i> Introduction</li>
+                    <li><i class="fas fa-code"></i> Basic Example</li>
+                    <li><i class="fas fa-project-diagram"></i> How It Works</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Common Mistakes</li>
+                    <li><i class="fas fa-question"></i> Q&A</li>
+                    <li><i class="fas fa-pen"></i> Exercises</li>
+                </ul>
+            </nav>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 65%"></div>
+                <span>65% Complete</span>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="tutorial-content">
+            <!-- Header Section -->
+            <header class="content-header">
+                <div class="language-badge js">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <h1>Understanding JavaScript Closures</h1>
+                <div class="meta-info">
+                    <span><i class="fas fa-clock"></i> 15 min read</span>
+                    <span><i class="fas fa-layer-group"></i> Intermediate</span>
+                    <span><i class="fas fa-tags"></i> Functions, Scope</span>
+                </div>
+            </header>
+
+            <!-- Concept Explanation -->
+            <section class="concept-section">
+                <h2><i class="fas fa-lightbulb"></i> Concept Explanation</h2>
+                <div class="explanation-box">
+                    <p>A closure is a function that has access to its own scope, the outer function's variables, and global variables - even after the outer function has returned.</p>
+                    
+                    <div class="use-case">
+                        <h3><i class="fas fa-question-circle"></i> When to Use</h3>
+                        <p>Closures are useful for:</p>
+                        <ul>
+                            <li>Data privacy/emulating private methods</li>
+                            <li>Creating function factories</li>
+                            <li>Maintaining state in async operations</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Code Example with Output -->
+            <section class="code-section">
+                <h2><i class="fas fa-code"></i> Code Example</h2>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span>closure-example.js</span>
+                        <button class="copy-button">
+                            <i class="far fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <pre><code class="language-js">function outerFunction() {
+    let outerVar = 'I am outside!';
+    
+    function innerFunction() {
+        console.log(outerVar);
+    }
+    
+    return innerFunction;
+}
+
+const myClosure = outerFunction();
+myClosure();</code></pre>
+                </div>
+                
+                <div class="output-panel">
+                    <div class="output-header">
+                        <span>Output</span>
+                        <button class="run-button">
+                            <i class="fas fa-play"></i> Try It Yourself
+                        </button>
+                    </div>
+                    <div class="output-content">
+                        <pre>Click "Try It Yourself" to see output</pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Q&A Section -->
+            <section class="qa-section">
+                <h2><i class="fas fa-question"></i> Frequently Asked Questions</h2>
+                <div class="qa-list">
+                    <div class="qa-item">
+                        <div class="question">
+                            <i class="fas fa-q"></i>
+                            <h3>What's the difference between scope and closure?</h3>
+                        </div>
+                        <div class="answer">
+                            <p><strong>Scope</strong> determines the accessibility/visibility of variables. <strong>Closure</strong> is when a function remembers and accesses variables from outside its own scope, even when that function is executed in a different scope.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="qa-item">
+                        <div class="question">
+                            <i class="fas fa-q"></i>
+                            <h3>Do closures cause memory leaks?</h3>
+                        </div>
+                        <div class="answer">
+                            <p>Closures can potentially cause memory leaks if not used carefully. Since closures maintain references to their outer variables, those variables can't be garbage collected as long as the closure exists. However, modern JavaScript engines are quite good at handling closures efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exercises Section -->
+            <section class="exercises-section">
+                <h2><i class="fas fa-pen"></i> Practice Exercises</h2>
+                <div class="exercise-list">
+                    <div class="exercise">
+                        <div class="exercise-header">
+                            <span class="exercise-number">1</span>
+                            <h3>Counter Closure</h3>
+                        </div>
+                        <div class="exercise-content">
+                            <p>Create a function <code>createCounter()</code> that returns a closure function. Each time the returned function is called, it should increment and return a counter value.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span>exercise.js</span>
+                                    <button class="copy-button">
+                                        <i class="far fa-copy"></i> Copy Starter
+                                    </button>
+                                </div>
+                                <pre><code class="language-js">function createCounter() {
+    // Your implementation here
+}
+
+const counter = createCounter();
+console.log(counter()); // Should log 1
+console.log(counter()); // Should log 2</code></pre>
+                            </div>
+                            <div class="output-panel">
+                                <div class="output-header">
+                                    <span>Expected Output</span>
+                                </div>
+                                <div class="output-content">
+                                    <pre>1
+2</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="#" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Previous: Scope Chain
+                </a>
+                <a href="#" class="nav-button next">
+                    Next: Prototypes <i class="fas fa-arrow-right"></i>
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <script src="{{url_for('static',filename='js/tutorial.js')}}"></script>
+</body>
+</html>

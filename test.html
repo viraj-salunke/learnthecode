@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Functions Tutorial | CodeMentor</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/tutorial-styles.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-element bg-1"></div>
+    <div class="bg-element bg-2"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-dots"></div>
+    
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-code"></i>
+            <a href="/" class="logo-link">
+                <span class="logo-text">LearnTheCode</span>
+            </a>
+            <button class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="/dashboard" class="nav-link">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/courses" class="nav-link">
+                        <i class="fas fa-book"></i> Courses
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/blog" class="nav-link">
+                        <i class="fas fa-blog"></i> Blog
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/code" class="nav-link">
+                        <i class="fas fa-tasks"></i> Test Your Code
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/connect" class="nav-link">
+                        <i class="fas fa-users"></i> Connect With Author
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+        <!-- Main Content Area -->
+        <main class="tutorial-content">
+            <!-- Header Section -->
+            <header class="content-header">
+                <div class="language-badge python">
+                    <i class="fab fa-python"></i>
+                    <span>{{info_cart.lang}}</span>
+                        
+                </div>
+           
+                <br>
+                 <h1>{{info_cart.heading}}</h1>
+                     
+                <div class="meta-info">
+                    
+
+                    <span><i class="fas fa-clock"></i> {{ info_cart.date }} read</span>
+                    <span><i class="fas fa-layer-group"></i> {{ info_cart.level }}</span>
+                    <span><i class="fas fa-tags"></i> {{ info_cart.subheading }}</span>
+                </div>
+            </header>
+
+            <!-- Theory Section 1: Function Basics -->
+            <section class="theory-section">
+                <h2><i class="fas fa-book"></i>Introduction</h2>
+                <div class="theory-content">
+                    <p>Topic: {{info_cart.heading}}</p>
+                    
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Key Characteristics of Python Functions:</strong>
+                            <ul class="styled-list">
+                                <li>Defined using the <code>def</code> keyword</li>
+                                <li>Can accept parameters (arguments)</li>
+                                <li>Can return values using the <code>return</code> statement</li>
+                                <li>Have their own local scope</li>
+                                <li>Can be assigned to variables</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Function Syntax</h3>
+                    <div class="code-block">
+                        <pre><code class="language-python">def function_name(parameters):
+    """docstring"""
+    # function body
+    return expression</code></pre>
+                    </div>
+
+                    <h3>Function Components</h3>
+                    <div class="elements-grid">
+                        <div class="element-card">
+                            <div class="element-header">
+                                <i class="fas fa-puzzle-piece"></i>
+                                <h4>Parameters</h4>
+                            </div>
+                            <p>Variables listed in the function definition that receive values when the function is called.</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="element-header">
+                                <i class="fas fa-arrow-right"></i>
+                                <h4>Arguments</h4>
+                            </div>
+                            <p>Actual values passed to the function when it's called.</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="element-header">
+                                <i class="fas fa-reply"></i>
+                                <h4>Return Value</h4>
+                            </div>
+                            <p>The value that a function sends back to the caller. If omitted, returns <code>None</code>.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Theory Section 2: Advanced Concepts -->
+            <section class="theory-section">
+                <h2><i class="fas fa-book-open"></i>Key Topic In This Sessions</h2>
+                <div class="theory-content">
+                    <h3>Variable Scope</h3>
+                    <p>Python has four levels of scope:</p>
+                    <ol class="styled-list">
+                        {% for top in topic %}
+                        <li><strong>{{top.topic}}</strong></li>
+                    
+                    </ol>
+                    {% endfor %}
+
+                    <h3>First-Class Functions</h3>
+                    <p>In Python, functions are first-class objects, meaning they can be:</p>
+                    <ul class="styled-list">
+                        <li>Assigned to variables</li>
+                        <li>Passed as arguments to other functions</li>
+                        <li>Returned from other functions</li>
+                        <li>Stored in data structures</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Closures and Decorators</strong>
+                            <p>Closures allow inner functions to remember the state of outer functions even after they've finished execution. Decorators are a powerful tool that uses closures to modify function behavior.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+----cut----
+            <!-- Interactive Code Examples Section -->
+            <section class="code-section">
+                <h2><i class="fas fa-code"></i> Interactive Python Examples</h2>
+                
+                <!-- Basic Function Example -->
+                <div class="example-container">
+                    <h3>Basic Function</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>basic_function.py</span>
+                            <div class="code-actions">
+                                <button class="copy-button">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                                <button class="reset-button">
+                                    <i class="fas fa-undo"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+                        <pre><code class="language-python editable-code" contenteditable="true">def greet(name):
+    """A simple greeting function"""
+    return f"Hello, {name}!"
+
+message = greet("Alice")
+print(message)</code></pre>
+                    </div>
+                    
+                    <div class="output-panel">
+                        <div class="output-header">
+                            <span>Output</span>
+                            <button class="run-button">
+                                <i class="fas fa-play"></i> Run Code
+                            </button>
+                        </div>
+                        <div class="output-content">
+                            <pre>Click "Run Code" to see output</pre>
+                        </div>
+                    </div>
+                </div>
+---cut---
+                <!-- Closure Example -->
+                <div class="example-container">
+                    <h3>Function Closure</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>closure.py</span>
+                            <div class="code-actions">
+                                <button class="copy-button">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                                <button class="reset-button">
+                                    <i class="fas fa-undo"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+                        <pre><code class="language-python editable-code" contenteditable="true">def outer_function(msg):
+    def inner_function():
+        print(msg)
+    return inner_function
+
+my_func = outer_function("Hello from closure")
+my_func()</code></pre>
+                    </div>
+                    
+                    <div class="output-panel">
+                        <div class="output-header">
+                            <span>Output</span>
+                            <button class="run-button">
+                                <i class="fas fa-play"></i> Run Code
+                            </button>
+                        </div>
+                        <div class="output-content">
+                            <pre>Click "Run Code" to see output</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Q&A Section -->
+            <section class="qa-section">
+                <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                
+                <div class="qa-item">
+                    <div class="question">
+                        <h3>What's the difference between parameters and arguments?</h3>
+                        <button class="toggle-answer">Show Answer</button>
+                    </div>
+                    <div class="answer">
+                        <p>Parameters are the variables listed in the function definition, while arguments are the actual values passed to the function when it's called. For example, in <code>def greet(name)</code>, <code>name</code> is a parameter. When you call <code>greet("Alice")</code>, <code>"Alice"</code> is the argument.</p>
+                    </div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">
+                        <h3>Can Python functions return multiple values?</h3>
+                        <button class="toggle-answer">Show Answer</button>
+                    </div>
+                    <div class="answer">
+                        <p>Yes, Python functions can return multiple values as a tuple. You can use tuple unpacking to assign them to separate variables:</p>
+                        <div class="code-block">
+                            <pre><code class="language-python">def get_user():
+    return "Alice", 25, "alice@example.com"
+
+name, age, email = get_user()</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">
+                        <h3>What are lambda functions in Python?</h3>
+                        <button class="toggle-answer">Show Answer</button>
+                    </div>
+                    <div class="answer">
+                        <p>Lambda functions are small anonymous functions defined with the <code>lambda</code> keyword. They can have any number of arguments but only one expression:</p>
+                        <div class="code-block">
+                            <pre><code class="language-python">square = lambda x: x ** 2
+print(square(5))  # Output: 25</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exercises Section -->
+            <section class="exercises-section">
+                <h2><i class="fas fa-pen"></i> Practice Exercises</h2>
+                
+                <div class="exercise-list">
+                    <!-- Exercise 1 -->
+                    <div class="exercise">
+                        <div class="exercise-header">
+                            <span class="exercise-number">1</span>
+                            <h3>Counter Function</h3>
+                            <span class="difficulty-badge beginner">Beginner</span>
+                        </div>
+                        <div class="exercise-content">
+                            <p>Create a function <code>create_counter()</code> that returns a function. Each time the returned function is called, it should increment and return a counter value.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span>counter.py</span>
+                                    <div class="code-actions">
+                                        <button class="copy-button">
+                                            <i class="far fa-copy"></i> Copy Starter
+                                        </button>
+                                        <button class="reset-button">
+                                            <i class="fas fa-undo"></i> Reset
+                                        </button>
+                                    </div>
+                                </div>
+                                <pre><code class="language-python editable-code" contenteditable="true">def create_counter():
+    # Your implementation here
+    pass
+
+counter = create_counter()
+print(counter()) # Should print 1
+print(counter()) # Should print 2</code></pre>
+                            </div>
+                            <div class="output-panel">
+                                <div class="output-header">
+                                    <span>Output</span>
+                                    <button class="run-button">
+                                        <i class="fas fa-play"></i> Run Code
+                                    </button>
+                                </div>
+                                <div class="output-content">
+                                    <pre>Click "Run Code" to test your solution</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Exercise 2 -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{url_for('static',filename='js/tutorial.js')}}"></script>
+</body>
+</html>
